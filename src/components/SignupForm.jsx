@@ -63,7 +63,7 @@ const SignupForm = ({ onSubmit }) => {
                         {errors.lastName && <p className="text-red-500 text-xs italic">Last name is required.</p>}
                     </div>
                     <div className="mb-4">
-                        <button type="button" onClick={handleSubmit(handleNext)} className="w-full bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        <button type="button" onClick={handleSubmit(handleNext)} className="w-full bg-gray-400 text-white py-2 px-4 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
                             Next ---&gt;
                         </button>
                     </div>
