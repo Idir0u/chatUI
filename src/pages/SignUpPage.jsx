@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import SignupForm from '../components/SignupForm';
 import { useAtom } from 'jotai';
@@ -10,31 +9,14 @@ const SignUpPage = () => {
     const [apiBaseUrl] = useAtom(apiBaseUrlAtom);
     const navigate = useNavigate();
 
-    const mutation = useMutation(newUser => {
-        return axios.post(`${apiBaseUrl}/users/signup`, newUser);
-    },
-    {
-        onMutate: (newUser) => {
-            console.log('onMutate:', newUser);
-        },
-        onError: (error, newUser) => {
-            console.error('onError:', error);
-        },
-        onSuccess: (data, newUser) => {
-            console.log('onSuccess:', data);
-            navigate('/login');//!!!!! or just directly navigate to the user's profile page
-        },
-        onSettled: (data, error, newUser) => {
-            console.log('onSettled:', data);
-        },
-    }
-);
-
     const handleSignUp = async (formData) => {
         try {
-            await mutation.mutateAsync(formData);
+            const response = await axios.post(`${apiBaseUrl}/users/signup`, formData);
+            console.log('onSuccess:', response.data);
             alert('Sign up successful!');
+            navigate('/login'); // or just directly navigate to the user's profile page
         } catch (error) {
+            console.error('onError:', error);
             alert('Sign up failed!');
         }
     };

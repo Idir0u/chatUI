@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Lobby = () => {
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 w-full h-full">
+        <div className="flex flex-col items-center justify-center min-h-screen min-w-screen bg-gray-200 w-full h-full border-3 border-blue-500 rounded">
             <h1 className="text-4xl font-bold mb-8">Welcome to Chat App</h1>
             <div className="space-x-4">
                 <Link to="/login">
